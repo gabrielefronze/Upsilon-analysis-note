@@ -1,0 +1,191 @@
+\documentclass[ALICE,manyauthors]{ALICE_analysis_notes}
+%\documentclass[ALICE,manyauthors]{ALICE_scientific_notes}
+
+\makeatletter\def\input@path{{Body/}}\makeatother
+
+
+\usepackage{lscape}
+\usepackage[T1]{fontenc}
+\usepackage[font=small,labelfont=bf]{caption}  %footnotesize
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath,amsthm,amscd}
+\usepackage{mathrsfs}
+\usepackage{array}
+%\usepackage{subfig}
+\usepackage{tabularx}		 		 % Permet d'utiliser l'environnement tabularx
+\usepackage{calc} 		 		 % Pour pouvoir donner des formules dans les définitions de longueur
+\usepackage{graphicx}			 % Pour inclure des graphiques 
+\usepackage[nottoc]{tocbibind}
+\usepackage{enumerate}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage[figuresright]{rotating}
+\usepackage{color}
+\usepackage{hhline}
+\usepackage{bigints}
+\definecolor{darkgreen}{rgb}{0,0.5,0}  %0.5
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=red,urlcolor=darkgreen]{hyperref}    %urlcolor=green
+
+\usepackage[hyperpageref]{backref}  % pour retourner à la citation à partir de la biblio
+% BACKREF  :
+% définir un style pour les backrefs  :
+\newcommand{\mapolicebackref}[1]{
+   \hspace*{\fill} \mbox{\textit {\small #1}}
+}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+
+%pour gérer les backref dans la bibliographie
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+\ifcase #1 \mapolicebackref{no citation}
+    \or \mapolicebackref{Cited page #2}
+    \else \mapolicebackref{#1 citations pages #2}
+\fi
+}
+%redéfinir les séparateurs en français :
+%\renewcommand*{\backreftwosep}{ et~}
+%\renewcommand*{\backreflastsep}{, et~}
+
+\usepackage[noadjust]{cite}       
+\renewcommand{\citedash}{--}
+
+
+\newcommand{\slfrac}[2]{\left.#1\right/#2}
+\usepackage{rotating}
+\usepackage[utf8x]{inputenc}
+\usepackage{lineno}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{xcolor}
+\usepackage{xspace}
+
+
+
+\newcommand {\sep}        {\xspace}
+\newcommand {\pt}        {\ensuremath{p_{\mathrm{\textsc{t}}}}\xspace}
+%\newcommand {\pt}        {\ensuremath{p_{\mathrm{\textsc{t}}}}\xspace}
+\newcommand {\pttrig}    {\ensuremath{p_{\mathrm{\textsc{t}}}^{\mathrm{trig}}}}
+\newcommand {\y}         {\ensuremath{y}\xspace}
+\newcommand {\sqrtSnn}   {\ensuremath{\sqrt{s_{_{\mathrm{NN}}}}}}
+\newcommand {\sqrtSnnE}[2][TeV]  {$\sqrtSnn = #2\,\mathrm{#1}$}
+\newcommand {\sqrtSnnEb}[2][TeV]  {$\boldsymbol{\sqrtSnn = #2\,\mathrm{#1}}$}
+\newcommand {\sqrtS}     {\ensuremath{\sqrt{s}}}
+\newcommand {\sqrtSE}[2][TeV]  {$\sqrtS = #2\,\mathrm{#1}$}
+\newcommand {\ee}        {\ensuremath{e^+e^-}}
+\newcommand {\mumu}      {\ensuremath{\mu^+\mu^-}}
+\newcommand {\Raa}       {\ensuremath{R_\mathrm{AA}}}
+\newcommand {\Taa}       {\ensuremath{T_\mathrm{AA}}}
+\newcommand {\Ncoll}     {\ensuremath{N_{\mathrm{coll}}}}
+\newcommand {\Npart}     {\ensuremath{N_{\mathrm{part}}}}
+\newcommand {\jpsi}      {\ensuremath{\mathrm{J}\kern-0.02em/\kern-0.05em\psi}\xspace}
+\newcommand {\psip}      {\ensuremath{\psi\mathrm{(2S)}}}
+\newcommand {\chic}      {\ensuremath{\chi_{c}}}
+\newcommand {\upsi}      {\ensuremath{\Upsilon}\xspace}
+\newcommand {\ups}      {\ensuremath{\Upsilon\mathrm{(1S)}}\xspace}
+\newcommand {\upsp}      {\ensuremath{\Upsilon\mathrm{(2S)}}\xspace}
+\newcommand {\upspp}      {\ensuremath{\Upsilon\mathrm{(3S)}}\xspace}
+\newcommand {\pp}        {\ensuremath{\mathrm {p\kern-0.05em p}}}                                                                                
+%\newcommand {\PbPb}      {\ensuremath{\mbox{Pb--Pb}}}
+\newcommand {\PbPb}      {\ensuremath{\mathrm{Pb-Pb}}}
+\newcommand {\PbPbb}      {\ensuremath{\boldsymbol{\mathrm{Pb-Pb}}}}
+%\newcommand {\pPb}       {\ensuremath{\mbox{p--Pb}}}
+\newcommand {\pPb}       {\ensuremath{\mathrm{p-Pb}}}
+\newcommand {\dEdx}      {\ensuremath{\mathrm{d}E/\mathrm{d}x}}
+\newcommand {\mee}       {\ensuremath{\mathrm{m}_{\ee}}}
+\newcommand {\gev}       {\ensuremath{\,\mathrm{GeV}}}
+\newcommand {\gevc}      {\ensuremath{\,\mathrm{GeV}\kern-0.05em/\kern-0.02em c}}
+\newcommand {\gevcc}     {\ensuremath{\,\mathrm{GeV}\kern-0.05em/\kern-0.02em c^2}}
+\newcommand {\cc}        {\ensuremath{{\rm c}\bar{{\rm c}}}}
+\newcommand {\aeps}      {\ensuremath{A\kern-0.1em\times\kern-0.1em\varepsilon}}
+
+\newcommand {\rd}[1]    {\textcolor{red}{#1}}
+\newcommand {\gn}[1]    {\textcolor{green}{#1}}
+\newcommand {\bl}[1]    {\textcolor{blue}{#1}}
+\newcommand {\plm}[1]   {\textcolor{orange}{#1}}
+
+
+\includeonly{
+  %introduction,
+  Dataset_Cuts,
+  Signal_Extraction,
+  RAA,
+  %AxE,
+  Systematics,
+  Results,
+  %annexes
+  } 
+
+
+\begin{document}
+
+\begin{titlepage}
+
+\PHnumber{ALICE-ANA-2016-xxx} 
+\PHdate{\today}
+
+%%% Put your own title + short title here:
+\title{ $\boldsymbol{\Upsilon}$ production at forward rapidity\\ in \PbPbb\sep collisions at \sqrtSnnEb{5.02} }
+\ShortTitle{$\Upsilon$ production in \PbPb\space collisions}   % appears on right page headers
+
+\author{Lardeux Antoine$^{1}$, Das Indranil$^{2}$, Fronz\'e Gabriele Gaetano$^{3, 4}$}
+\author{
+1. CEA/IRFU, centre d'\'etude de Saclay, Gif-sur-Yvette\\
+2. Saha Institute of Nuclear Physics, Kolkata\\
+3. Universita e INFN, Torino
+4. SUBATECH, Nantes\\
+}
+
+\begin{center} 
+Email: \href{mailto:antoine.lardeux@cern.ch}{antoine.lardeux@cern.ch}, \href{mailto:indranil.das@cern.ch}{indranil.das@cern.ch}, \href{mailto:gfronze@cern.ch}{gfronze@cern.ch} \\ 
+Twiki: \url{https://twiki.cern.ch/twiki/bin/view/ALICE/UpsilonPbPb2015} 
+\end{center} 
+
+
+\ShortAuthor{ALICE Analysis Note 2016}      % appears on left page headers, do not change
+
+\begin{abstract}
+ALICE has measured the inclusive \ups\sep and \upsp\sep production in \PbPb\sep collisions at \sqrtSnnE{5.02}. 
+The measurement is performed at forward rapidity ($2.5<y<4$) and down to zero transverse momentum via the dimuon decay channel by analyzing the dimuon triggered events collected with the ALICE muon spectrometer apparatus. 
+The nuclear modification factor (\Raa) of \ups\sep has been computed as a function of the collision centrality and the \ups\sep rapidity.
+The pp reference cross section used in this calculation has been determined by an extrapolation procedure based on various LHCb and ALICE results at different energies.
+An integrated ($0-90\%$) \ups\sep \Raa\sep has been obtained for $2.5<y<4$ and $0<\pt<12$ GeV/$c$ such as:
+\begin{align*}
+\Raa^{\ups} (0-90\%)=0.40 \pm 0.03 \,(stat.) \pm 0.05 \,(syst.)
+\end{align*}
+
+\end{abstract}
+
+\end{titlepage}
+
+%\input{alice_mynote.tex}               %%%%%%%%%%% put the body of the article here
+
+
+
+% Table des matières
+\setcounter{tocdepth}{2}		 % pour régler sa profondeur - par défaut  : 2
+\cleardoublepage
+\pdfbookmark[-1]{Table des matières}{tablematieres} 	 % pour ajouter la table des matières dans l'index du fichier compilé
+\tableofcontents 							 % pour afficher la table des matières
+
+%\include{introduction}
+\include{Dataset_Cuts}
+\include{Signal_Extraction}
+\include{RAA}
+\include{AxE}
+\include{Systematics}
+\include{Results}
+%\appendix
+%\include{annexes}
+
+
+% ================================== BIBLIOGRAPHIE =============================
+%\bibliographystyle{alpha} % style alphabétique en anglais
+\bibliographystyle{plain} % style numéroté en anglais
+
+%% Fabrication de la biblio
+\bibliography{biblio} % utilise le fichier biblio.bib
+
+
+
+
+\end{document}
